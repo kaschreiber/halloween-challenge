@@ -303,14 +303,15 @@ const controls = new OrbitControls(camera, canvas)
 controls.target.set(0, 1, 0);
 controls.enableDamping = true;
 controls.maxPolarAngle = 1.45;
-controls.enabled = false;
+controls.enableZoom = false;
+// controls.enabled = false;
 
 // Transform controls
 const transformControls = new TransformControls(camera, canvas);
 
-// transformControls.addEventListener('dragging-changed', (event) => {
-//     //controls.enabled = !event.value;
-// });
+transformControls.addEventListener('dragging-changed', (event) => {
+    controls.enabled = !event.value;
+});
 
 window.addEventListener('keydown', (event) => {
     switch (event.key) {
